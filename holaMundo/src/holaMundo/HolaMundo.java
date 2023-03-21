@@ -136,43 +136,222 @@ public class HolaMundo {
 		System.out.printf("%d y %d son iguales: %b \n",valor1,valor2,valor1==valor2); // true
 		System.out.println(valor1>=valor2); // true
 	}
-	
-	public static void algoritmoCesar() {
-		Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Ingresa el texto a codificar: ");
-        String text = scanner.nextLine();
-        System.out.print("Ingresa el desplazamiento: ");
-        int shift = scanner.nextInt();
-
-        StringBuilder encodedText = new StringBuilder();
-        for (char c : text.toCharArray()) {
-            if (Character.isLetter(c)) {
-                int ascii = (int) c;
-                ascii += shift;
-                encodedText.append((char) ascii);
-            } else {
-                encodedText.append(c);
-            }
-        }
-
-        System.out.println("Texto codificado: " + encodedText.toString());
-	}
 
 	public static void ejercicio5() {
-		
+		int N = 1;
+		System.out.println("Valor inicial de N = " + N);
+		//N = N + 77;  // N = 78
+		N += 77;  // N = 78
+		System.out.println("N + 77 = " + N);
+		//N = N - 3;   // N = 75
+		N -= 3;   // N = 75
+		System.out.println("N - 3 = " + N);
+		//N = N * 2;   // N = 150	
+		N *= 2;   // N = 150	
+		System.out.println("N * 2 = " + N);		
 	}
 	
+	public static void ejercicio5b() {  // No es una solución correcta
+		int N = 1;
+		System.out.println("Valor inicial de N = " + N);  // ?
+		System.out.println("N + 77 = " + (N+77));  // 78?
+		System.out.println("N - 3 = " + (N-3));	// 75 o -2 -> -2
+		System.out.println("N * 2 = " + N);		
+	}
+	
+	public static void ejemplosIncrementosDecrementos() {
+		int numero = 10;
+		// pre-incremento
+		++numero;  // 11
+		System.out.println(numero);  // 11
+		// post-incremento
+		numero++;  // 12
+		System.out.println(numero);  // 12
+		// pre-decremento
+		--numero;  // 11
+		System.out.println(numero);  // 11
+		// post-decremento
+		numero--;  // 10
+		System.out.println(numero);  // 10
+		
+		//// LO IMPORTANTE ES EL MOMENTO EN QUE INCREMENTA O DECREMENTA
+		System.out.println(++numero);  // 10 u 11 ? -> 11 y número = 11
+		System.out.println(numero++);  // 11 y número = 12
+		System.out.println(numero);  // 12
+		
+		//System.out.println(++numero+numero++); // 26 (13 + 13) y luego numero=14  // a+b = b+a
+		System.out.println(numero+++ ++numero); // 26 (13+13) y luego numero=14  // a+b = b+a
+		System.out.println(numero);  // 14
+		int numero2 = ++numero;  // numero2 = 15; numero = 15;
+		System.out.println("numero2 = " + numero2 + " numero = " + numero);  // 15 y 15
+		int numero3 = numero++;  // numero3 = 15; numero = 16;
+		System.out.println("numero2 = " + numero3 + " numero = " + numero);
+	}
+	
+	public static void ejemplosConstantes() {
+		final double IVA = 0.21;
+		final double PI = 3.1416;
+		double precioVaquero = 50;
+		System.out.println("El precio final es: " + (precioVaquero * (1+IVA)));
+		//PI = 3.14159;  // daría error
+	}
+	
+	public static void conversionesNumerosCadenas() {
+		int numero = 10;
+		String cadena = "11";
+		System.out.println(cadena + numero);  // 1110
+		// Convertir cadena a número
+		System.out.println(Integer.parseInt(cadena) + numero);  // 21
+		int prefijo=34;
+		int telefono=666666666;
+		System.out.println(prefijo+telefono); // 666666700
+		System.out.println(""+prefijo+telefono); // 003466666666
+		// Convertir numero a cadena
+		System.out.println(String.valueOf(prefijo)+String.valueOf(telefono)); // 3466666666
+		System.out.println("00" + prefijo + "-" + telefono);//0034-666666666
+	}
+	
+	public static void ejercicio6() {
+		// Ejemplo para almacenar valores iniciales de variables que podrán cambiar en el código
+		int A = 1;
+		int B = 2;
+		int C = 3;
+		int D = 4;
+		int auxB = B;  // 2
+		
+		System.out.println("Valores iniciales: A = " + A + " B = " + B + " C = " + C + " D = " + D);
+		B=C;  // B = 3
+		System.out.println("B toma el valor de C -> B = " + B);
+		C=A;
+		System.out.println("C toma el valor de A -> C = " + C);
+		A=D;
+		System.out.println("A toma el valor de D -> A = " + A);
+		D=auxB;
+		System.out.println("D toma el valor de B -> D = " + D);
+	}
+	
+	public static void ejemplosSaltos() {
+		//System.out.println("Hola\n\tFran\nBien?");
+		System.out.println("Elige una opción");
+		System.out.println("\t1) Añadir producto");
+		System.out.println("\t2) Borrar producto");
+	}
+	
+	public static void ejemplosFormateos() {
+		String fran = "Fran";
+		String consuelo = "Consuelo";
+		double salario1 = 95567.89;
+		double salario2 = 2589.3674;
+		
+		System.out.printf("%-12s%14s\n","NOMBRE","SALARIO");
+		System.out.println("--------------------------");
+		System.out.printf("%-12s%14.2f€\n",fran,salario1);
+		System.out.printf("%-12s%14.2f€\n",consuelo,salario2);		
+	}
+	
+	public static void ejemplosScanner() {  // Leer de la consola
+		Scanner sc = new Scanner(System.in); // Abro el Scanner
+		System.out.println("Introduzca su nombre:");
+		String nombre = sc.nextLine();  // En nombre tendré lo que ponga por pantalla el usuario hasta que pulsa Intro
+		System.out.println("Introduzca su localidad");
+		String localidad = sc.nextLine();
+		System.out.println("Introduzca su salario:");
+		double salario = sc.nextDouble();
+		sc.nextLine();  // Limpiar el buffer
+		System.out.println("Introduzca cuanto desearía ganar:");
+		double salarioDeseado = sc.nextDouble();
+		sc.nextLine();
+		System.out.println("Hola " + nombre + " me encanta " 
+		+ localidad + " y que usted gane " + salario + " y que quiera ganar " + salarioDeseado);
+		sc.close();  // cerrar el Scanner
+	}
+	
+	public static void ejemplosScanner2() {  // Leer de la consola
+		Scanner sc = new Scanner(System.in); // Abro el Scanner
+		System.out.println("Introduzca su nombre:");
+		String nombre = sc.nextLine();  // En nombre tendré lo que ponga por pantalla el usuario hasta que pulsa Intro
+		System.out.println("Introduzca su localidad");
+		String localidad = sc.nextLine();
+		System.out.println("Introduzca su salario:");
+		double salario = Double.parseDouble(sc.next().replace(',', '.'));
+		sc.nextLine();
+		System.out.println("Introduzca cuanto desearía ganar:");
+		double salarioDeseado = Double.parseDouble(sc.next().replace(',', '.'));
+		sc.nextLine();
+		System.out.println("Hola " + nombre + " me encanta " 
+				+ localidad + " y que usted gane " + salario + " y que quiera ganar " + salarioDeseado);
+		sc.close();  // cerrar el Scanner
+	}
+	
+	public static void ejercicio15() {
+		Scanner cs = new Scanner (System.in);
+		final double IVA = 0.21;
+		// Obtención de datos
+		System.out.println("Enter the name of the product: ");
+		String product1 = cs.nextLine();
+		System.out.println("enter the value of the product: ");
+		double value1 = Double.parseDouble(cs.next().replace(',', '.'));
+		cs.nextLine();
+		System.out.println("Enter the name of the product: ");
+		String product2 = cs.nextLine();
+		System.out.println("enter the value of the product: ");
+		double value2 = Double.parseDouble(cs.next().replace(',', '.'));
+		cs.nextLine();
+		System.out.println("Enter the name of the product: ");
+		String product3 = cs.nextLine();
+		System.out.println("enter the value of the product: ");
+		double value3 = Double.parseDouble(cs.next().replace(',', '.'));
+		cs.nextLine();
+		// Impresión de datos
+		System.out.printf("-----------------------------\n");
+		System.out.printf("%-15s%12s%12s\n","Name_Product", "Value", "IVA");
+		System.out.printf("%-15s%11.2f$%11.2f$\n",product1,value1,value1*(1+IVA));
+		System.out.printf("%-15s%11.2f$%11.2f$\n",product2,value2,value2*(1+IVA));
+		System.out.printf("%-15s%11.2f$%11.2f$\n",product3,value3,value3*(1+IVA));
+		cs.close();  // cerrar el Scanner
+	}
+	
+	public static void ejercicio7() {
+		char letra1 = 'b';
+		char letra2 = 'k';
+		System.out.println("'b' tiene la posición " + (int)letra1);
+		System.out.println("'k' tiene la posición " + (int)letra2);
+		System.out.println("La diferencia entre 'b' y 'k' es: "+ ((int)letra2-(int)letra1));		
+		System.out.println("La diferencia entre 'b' y 'k' es: "+ ((int)(letra2-letra1)));		
+	}
+	
+	public static void ejercicio4() {
+		double v1=1;
+		double v2=2;
+		double v3=3;
+		double v4=4;
+		System.out.printf("%.0f ",v1);
+		System.out.print(v2 + " ");
+		System.out.print(v3 + " ");
+		System.out.print(v4 + " ");
+		System.out.println();
+		System.out.println((v1+v2)*v3/v4);		
+	}
 	
 	public static void main(String[] args) {
 		//ejemplosComentarios();
 		//ejemplosTipos1();
-		//algoritmoCesar();
 		//ejemplosString();
 		//ejemplosBoolean();
 		//ejercicio3();
 		//tablasVerdad();
-		ejercicio5();
+		//ejercicio5();
+		//ejemplosIncrementosDecrementos();
+		//ejemplosConstantes();
+		//conversionesNumerosCadenas();
+		//ejercicio6();
+		//ejemplosSaltos();
+		//ejemplosFormateos();
+		//ejemplosScanner();
+		//ejemplosScanner2();
+		//ejercicio15();
+		//ejercicio7();
+		ejercicio4();
 	}
 
 }

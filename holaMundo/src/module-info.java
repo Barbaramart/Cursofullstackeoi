@@ -2,7 +2,7 @@
  * 
  */
 /**
- * @author Bárbara
+ * @author Fran
  *
  */
 module holaMundo {
